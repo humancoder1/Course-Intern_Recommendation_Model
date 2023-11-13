@@ -1,4 +1,5 @@
 import pandas as pd
+import uvicorn
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -43,6 +44,6 @@ app = FastAPI()
 def recommendation_func(skills : str):
     recommendations = get_course([skills])
     return recommendations
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
