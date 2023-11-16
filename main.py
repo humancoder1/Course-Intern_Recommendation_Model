@@ -5,8 +5,12 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from typing import List
+
+
+
 
 
 dataframe1 = pd.read_csv("./all_courses.csv")
@@ -38,7 +42,22 @@ def get_course(skills):
 
 # print(get_course(["CSS"]))
 
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/recommendation_func/{skills}")
 def recommendation_func(skills : str):
