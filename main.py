@@ -43,10 +43,8 @@ def get_course(skills):
 # print(get_course(["CSS"]))
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
+    "https://workshala-in.vercel.app",
+    "http://localhost:5173",
 ]
 
 app = FastAPI()
